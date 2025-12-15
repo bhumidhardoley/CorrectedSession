@@ -3,8 +3,9 @@ import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import { Post } from "@/models/Post";
 import { connectDB} from "@/lib/mongodb";
+
 interface JwtPayload {
-  id: string;
+  _id: string;
 }
 
 export async function POST(req: NextRequest) {
@@ -37,11 +38,10 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 4️⃣ Create post (author + date handled here)
     const post = await Post.create({
       title,
       body,
-      author: new mongoose.Types.ObjectId(decoded.id),
+      author: new mongoose.Types.ObjectId(decoded._id),
     });
 
     // 5️⃣ Respond

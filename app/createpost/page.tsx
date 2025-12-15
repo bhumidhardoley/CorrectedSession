@@ -6,17 +6,22 @@ export default function CreatePostPage() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const response = fetch("/api/createpost",{
+    const response = await fetch("/api/createpost",{
         method: 'POST',
         headers: {
             'Content-Type':'application/json'
         },
         body:JSON.stringify({title,body})
     })
-   alert('Created The post')
+  
+   if(response.ok){
+    alert("Created Successfuly")
+   } else {
+    alert('Something went Wrong')
+   }
   };
 
   return (

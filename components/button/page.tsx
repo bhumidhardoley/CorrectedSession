@@ -29,7 +29,7 @@ const page = () => {
      <div
       style={{
         minHeight: '60vh',
-        minWidth:'100vw',
+        minWidth:'60vw',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
