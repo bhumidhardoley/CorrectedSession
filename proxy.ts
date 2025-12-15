@@ -1,6 +1,5 @@
 import { NextResponse , NextRequest } from "next/server";
 import jwt from 'jsonwebtoken'
-import { url } from "inspector";
 
 const JWT_SECRET = process.env.JWT_SECRET || "my-simple-thing"
 
@@ -16,9 +15,9 @@ export function proxy(request: NextRequest){
         throw new Error('Set the environment variable')
     }
 
-    const isAuthPathOrRoot = path === '/' || PUBLIC_PATH.some(p=>path.startsWith(p))
+    const isPublicPathOrRoot = path === '/' || PUBLIC_PATH.some(p=>path.startsWith(p))
 
-    if(token && isAuthPathOrRoot) {
+    if(token && isPublicPathOrRoot) {
         try{
             jwt.verify(token,JWT_SECRET);
             return NextResponse.redirect(new URL(AUTH_PATH,request.url))
