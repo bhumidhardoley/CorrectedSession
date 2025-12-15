@@ -28,7 +28,7 @@ const page = () => {
   return (
      <div
       style={{
-        minHeight: '100vh',
+        minHeight: '60vh',
         minWidth:'100vw',
         display: 'flex',
         justifyContent: 'center',
