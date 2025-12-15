@@ -26,17 +26,7 @@ const page = () => {
     }
     const router = useRouter()
   return (
-     <div
-      style={{
-        minHeight: '60vh',
-        minWidth:'60vw',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#f4f6f8',
-      }}
-    >
-      
+   
 
 
 
@@ -55,7 +45,7 @@ const page = () => {
           >
             Log out
           </button>
-    </div>
+ 
   )
 }
 

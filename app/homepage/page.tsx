@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import LogOutButton from "@/components/button/page";
-
+import DeleteButtton from "@/components/deletebutton/page"
 interface Post {
   _id: string;
   title: string;
@@ -64,18 +64,34 @@ const Page = () => {
 
       <ul style={{ marginTop: "15px", paddingLeft: "18px" }}>
         {posts.map((post) => (
-          <li key={post._id} style={{ marginBottom: "8px" }}>
-            <Link
-              href={`/posts/${post._id}`}
-              style={{
-                textDecoration: "none",
-                color: "#111",
-                fontWeight: 500,
-              }}
-            >
-              {post.title}
-            </Link>
-          </li>
+          <li
+  key={post._id}
+  style={{
+    marginBottom: "10px",
+    padding: "10px 12px",
+    border: "1px solid #e5e5e5",
+    borderRadius: "8px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: "10px",
+  }}
+>
+  <Link
+    href={`/posts/${post._id}`}
+    style={{
+      textDecoration: "none",
+      color: "#111",
+      fontWeight: 500,
+      flexGrow: 1,
+    }}
+  >
+    {post.title}
+  </Link>
+
+  <DeleteButtton postId={post._id}/>
+</li>
+
         ))}
       </ul>
     </div>
