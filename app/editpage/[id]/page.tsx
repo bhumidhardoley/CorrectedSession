@@ -49,6 +49,8 @@ const page = () => {
 
           if(respone.ok){
             router.push(`/posts/${id}`)
+          } else{
+            alert('You are not the owner 😡')
           }
 
         }catch(error){

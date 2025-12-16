@@ -4,9 +4,6 @@ import {Post} from '@/models/Post'
 import { connectDB } from '@/lib/mongodb'
 import { unauthorized } from 'next/navigation'
 
-interface JwtPayload {
-    _id: string
-}
 
 export async function GET(req: NextRequest){
     try {
@@ -23,7 +20,7 @@ export async function GET(req: NextRequest){
             throw new Error('Please enter token')
         }
 
-        const decoded = jwt.verify(token,process.env.JWT_SECRET) as JwtPayload
+        const decoded = jwt.verify(token,process.env.JWT_SECRET) 
 
 
         const posts = await Post.find({

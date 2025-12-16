@@ -3,10 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import { Post } from "@/models/Post";
 import { connectDB} from "@/lib/mongodb";
-
-interface JwtPayload {
-  _id: string;
-}
+import { JwtPayload } from "jsonwebtoken";
 
 export async function POST(req: NextRequest) {
   try {
@@ -26,7 +23,7 @@ export async function POST(req: NextRequest) {
     const decoded = jwt.verify(
       token,
       process.env.JWT_SECRET!
-    ) as JwtPayload;
+    )  as JwtPayload
 
     // 3️⃣ Get data from client
     const { title, body } = await req.json();
