@@ -1,11 +1,12 @@
 import { NextResponse , NextRequest } from "next/server";
 import jwt from 'jsonwebtoken'
 
-const JWT_SECRET = process.env.JWT_SECRET || "my-simple-thing"
+const JWT_SECRET = process.env.JWT_SECRET 
 
 const PUBLIC_PATH = ['/signin','/singup']
-const AUTH_PATH ='/homepage'
+const AUTH_PATH =['/homepage','/editpage']
 const SIGNIN_PAGE = '/signin'
+const HOMEPAGE = '/homepage'
 
 export function proxy(request: NextRequest){
     const token =request.cookies.get('her')?.value
@@ -20,7 +21,7 @@ export function proxy(request: NextRequest){
     if(token && isPublicPathOrRoot) {
         try{
             jwt.verify(token,JWT_SECRET);
-            return NextResponse.redirect(new URL(AUTH_PATH,request.url))
+            return NextResponse.redirect(new URL(HOMEPAGE,request.url))
         } catch(error){
             const response = NextResponse.next()
             response.cookies.set('her','',{
@@ -32,7 +33,7 @@ export function proxy(request: NextRequest){
         }
     }
 
-    if(path.startsWith(AUTH_PATH)) {
+    if(AUTH_PATH.some(p=>path.startsWith(p))) {
         if(!token) {
             return NextResponse.redirect(new URL(SIGNIN_PAGE,request.url))
     }
