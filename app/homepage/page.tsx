@@ -54,7 +54,11 @@ const Page = () => {
 
       <hr />
 
-      <h2>Your Posts</h2>
+      <h2 style={{
+        textAlign: 'center',
+        marginTop: '20px',
+        fontWeight: 'bold'
+      }}>Your Posts</h2>
 
       {loading && <p>Loading...</p>}
 

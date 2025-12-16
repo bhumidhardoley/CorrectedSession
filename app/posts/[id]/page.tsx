@@ -33,7 +33,10 @@ const PostPage = () => {
 
   return (
     <div style={{ maxWidth: "700px", margin: "0 auto", padding: "20px" }}>
-      <h1>{post.title}</h1>
+      <h1 style={{
+        fontWeight: 'bold',
+fontSize: '1.5rem'
+      }}>{post.title}</h1>
       <p style={{ marginTop: "15px", lineHeight: 1.6 }}>{post.body}</p>
     </div>
   );

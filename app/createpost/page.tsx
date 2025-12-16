@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function CreatePostPage() {
+  const router = useRouter()
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
@@ -18,7 +20,7 @@ export default function CreatePostPage() {
     })
   
    if(response.ok){
-    alert("Created Successfuly")
+    router.push('/homepage')
    } else {
     alert('Something went Wrong')
    }
@@ -81,7 +83,9 @@ export default function CreatePostPage() {
             <button
               type="submit"
               className="rounded-md bg-neutral-900 px-5 py-2 text-sm font-medium text-white hover:bg-neutral-800"
-
+              style={{
+                cursor: 'pointer'
+              }}
               onClick={handleSubmit}
             >
               Publish
