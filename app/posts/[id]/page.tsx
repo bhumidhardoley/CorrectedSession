@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 interface Post {
   _id: string;
@@ -11,6 +12,7 @@ interface Post {
 }
 
 const PostPage = () => {
+  const newRouter = useRouter()
   const { id } = useParams();
   const [post, setPost] = useState<Post | null>(null);
   const [loading, setLoading] = useState(true);
@@ -66,6 +68,8 @@ fontSize: '1.5rem'
     e.currentTarget.style.backgroundColor = "#111827";
     e.currentTarget.style.boxShadow = "0 4px 10px rgba(0,0,0,0.15)";
   }}
+
+  onClick={()=>newRouter.push(`/editpage/${id}`)}
 >
   Edit Post
 </button>
